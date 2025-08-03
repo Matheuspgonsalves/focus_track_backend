@@ -7,4 +7,20 @@ typings/
 
 # Node.js dependency directory
 node_modules/
-*.local
+
+*.log
+
+.env-production
+.env.production
+.env-prod
+.env.prod
+.env-dev
+.env-local
+service-account.json
+env-production.json
+
+# THIS IS HERE JUST FOR NOW
+# NEED TO REMOVE WHEN IT'S DONE
+firestore-auth.middleware.ts
+
+functions/lib/

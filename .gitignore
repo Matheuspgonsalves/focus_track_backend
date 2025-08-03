@@ -7,8 +7,16 @@ yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log*
 
+.runtimeconfig.json
+env-dev.json
+env-prod.json
+
 # Firebase cache
 .firebase/
+
+.DS_Store
+
+*.log
 
 # Firebase config
 
@@ -64,6 +72,3 @@ node_modules/
 
 # dotenv environment variables file
 .env
-
-# dataconnect generated files
-.dataconnect

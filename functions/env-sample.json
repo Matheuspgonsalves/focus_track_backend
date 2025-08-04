@@ -1,0 +1,7 @@
+{
+  "env": {
+    "ENV": "",
+    "BUGSNAG_API_KEY": "",
+    "FIREBASE_PROJECT_ID": ""
+  }
+}

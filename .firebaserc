@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "focus-track-development"
+    "dev": "focus-track-development",
+    "prod": "focus-track-prod"
   }
 }

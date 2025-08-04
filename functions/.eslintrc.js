@@ -14,12 +14,12 @@ module.exports = {
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: ["tsconfig.json", "tsconfig.dev.json"],
+    project: ["./functions/tsconfig.json", "./functions/tsconfig.dev.json"],
     sourceType: "module",
   },
   ignorePatterns: [
     "/lib/**/*", // Ignore built files.
-    "/generated/**/*", // Ignore generated files.
+    "/src/__tests__postman/**/*",
   ],
   plugins: [
     "@typescript-eslint",
@@ -27,7 +27,12 @@ module.exports = {
   ],
   rules: {
     "quotes": ["error", "double"],
-    "import/no-unresolved": 0,
-    "indent": ["error", 2],
+    "@typescript-eslint/no-explicit-any": "off",
+    "max-len": ["error", {"code": 240}],
+    "require-jsdoc": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "camelcase": "off",
+    "no-extend-native": "off",
+    "linebreak-style": ["error", "unix"], // 'unix' = LF, 'windows' = CRLF
   },
 };

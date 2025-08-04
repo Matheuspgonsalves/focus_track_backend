@@ -1,7 +1,9 @@
 import express, {Request, Response} from "express";
 import * as functions from "firebase-functions";
 import cors from "cors";
-import authMiddleware from "./middleware/auth-middleware";
+// import authMiddleware from "./middleware/auth-middleware";
+
+import {createUser} from "./http/user/register.http";
 
 import Bugsnag from "@bugsnag/js";
 import bugsnagPluginExpress from "@bugsnag/plugin-express";
@@ -45,5 +47,8 @@ app.get("/", (req: Request, res: Response) => {
 
   return res.status(200).send({message: "You should not be here!"});
 });
+
+// User
+app.post("/user/create-account", (request: any, response: any) => createUser(request, response));
 
 exports.app = functions.runWith({timeoutSeconds: 540, memory: "8GB"}).https.onRequest(app);

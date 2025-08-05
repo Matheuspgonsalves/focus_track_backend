@@ -4,6 +4,7 @@ import cors from "cors";
 // import authMiddleware from "./middleware/auth-middleware";
 
 import {createUser} from "./http/user/register.http";
+import {jwtAuthentication} from "./http/user/login.http";
 
 import Bugsnag from "@bugsnag/js";
 import bugsnagPluginExpress from "@bugsnag/plugin-express";
@@ -49,6 +50,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 // User
+app.post("/user/auth-login", (request: any, response: any) => jwtAuthentication(request, response));
 app.post("/user/create-account", (request: any, response: any) => createUser(request, response));
 
 exports.app = functions.runWith({timeoutSeconds: 540, memory: "8GB"}).https.onRequest(app);

@@ -10,7 +10,7 @@ const userSchema: joi.ObjectSchema<User> = joi.object({
   name: joi.string().required(),
   email: joi.string().email().required(),
   password: joi.string().min(6).required(),
-});
+}).unknown(false);
 
 export const createUser = functions.runWith({timeoutSeconds: 540, memory: "8GB"}).https.onRequest(
     (request: any, response: any) => {

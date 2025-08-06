@@ -5,11 +5,13 @@ import cors from "cors";
 
 import {createUser} from "./http/user/register.http";
 import {jwtAuthentication} from "./http/user/login.http";
+import {saveSessionTime} from "./http/timer/saveSessionTime.http";
 
 import Bugsnag from "@bugsnag/js";
 import bugsnagPluginExpress from "@bugsnag/plugin-express";
 
 import * as config from "./config/app-config";
+import authMiddleware from "./middleware/auth-middleware";
 
 config.init();
 
@@ -52,5 +54,8 @@ app.get("/", (req: Request, res: Response) => {
 // User
 app.post("/user/auth-login", (request: any, response: any) => jwtAuthentication(request, response));
 app.post("/user/create-account", (request: any, response: any) => createUser(request, response));
+
+// Timer
+app.post("/timer/save-session-time", authMiddleware.checkToken, (request: any, response: any) => saveSessionTime(request, response));
 
 exports.app = functions.runWith({timeoutSeconds: 540, memory: "8GB"}).https.onRequest(app);
